@@ -1,0 +1,34 @@
+import requests
+prod = requests.get('https://www.producthunt.com/')
+import requests
+prod = requests.get('https://www.producthunt.com/')
+
+from bs4 import BeautifulSoup
+soup = BeautifulSoup(prod.text, 'html.parser')
+
+post = soup.find_all('div', class_='content_31491')
+post1 = post[0]
+len(post)
+
+score = soup.find_all('button', class_='button_30e5c smallSize_5216f simpleVariant_8a863 button_e47d2')
+score1 = score[0]
+len(score)
+
+Tpost = []
+Tscore = []
+for i in post:
+    post = i.div.text
+    Tpost.append(post)
+
+for i in score:
+    score = i.span.text
+    Tscore.append(score)
+
+import pandas as pd
+df = pd.DataFrame({'Product': Tpost,
+                   'Votes': Tscore,})
+df
+import pandas as pd
+df = pd.DataFrame({'Product': Tpost,
+                   'Votes': Tscore,})
+df
